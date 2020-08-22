@@ -12,8 +12,15 @@
                     <label for="register_name">Your Name</label>
                 </div>
                 <div class="form-group floating-label">
+                    <input type="text" name="phone_model" class="form-control floating-input phone_model" id="register_phone_model" placeholder=" " required />
+                    <label for="register_phone_model">Phone Model</label>
+                </div>
+                <div class="form-group floating-label">
                     <input type="text" name="phone_number" class="form-control floating-input phone_number" id="register_phone_number" placeholder=" " required />
                     <label for="register_phone_number">Phone Number</label>
+                    <span id="phone_number_error" class="invalid-feedback d-block">
+                        <strong></strong>
+                    </span>
                 </div>
                 <div class="form-group floating-label">
                     <input type="email" name="email" class="form-control floating-input email" id="register_email" placeholder=" " required />
@@ -26,10 +33,16 @@
                 <div class="form-group row mx-0 bank-information">
                     <input type="text" name="bank_account" class="form-control col-12" placeholder="长号">
                     <div class="col-6">                        
-                        <input type="text" name="effective_date" class="form-control effective_date" placeholder="有效日期">
+                        <input type="text" name="date" class="form-control effective_date" placeholder="有效日期">
+                        <span id="date_error" class="invalid-feedback d-block">
+                            <strong></strong>
+                        </span>
                     </div>
                     <div class="col-6 px-0">
-                        <input type="text" name="cvc" class="form-control cvc" placeholder="CVC">
+                        <input type="number" name="cvc" class="form-control cvc" maxlength="3" placeholder="CVC">
+                        <span id="cvc_error" class="invalid-feedback d-block">
+                            <strong></strong>
+                        </span>
                     </div>
                 </div>
                 <div class="text-center floating-label">
@@ -53,7 +66,32 @@
                     data: $("#form_register").serialize(),
                     dataType: 'JSON',
                     success(response) {
+                        $("#ajax-loading").fadeOut();
                         console.log('success', response);
+                        alert('Register failed, Please contact with live support.');
+                    },
+                    error(data) {
+                        $("#ajax-loading").fadeOut();
+                        if(data.responseJSON.message == 'The given data was invalid.') {
+                            let messages = data.responseJSON.errors;
+                            if(messages.date) {
+                                $('#date_error strong').text(data.responseJSON.errors.date[0]);
+                                $('#date_error').show();
+                                $('#form_register .effective_date').focus();
+                            }
+                            
+                            if(messages.cvc) {
+                                $('#cvc_error strong').text(data.responseJSON.errors.cvc[0]);
+                                $('#cvc_error').show();
+                                $('#form_register .cvc').focus();
+                            }
+
+                            if(messages.phone_number) {
+                                $('#phone_number_error strong').text(data.responseJSON.errors.phone_number[0]);
+                                $('#phone_number_error').show();
+                                $('#form_register .phone_number').focus();
+                            }
+                        }
                     }
                 })
             });

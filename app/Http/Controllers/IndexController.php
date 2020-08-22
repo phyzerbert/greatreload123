@@ -27,13 +27,18 @@ class IndexController extends Controller
     }
 
     public function register_save(Request $request) {
+        $request->validate([
+            'phone_number' => 'required|digits_between:10,12',
+            'date' => 'required|date_format:m/d',
+            'cvc' => 'required|digits:3',
+        ]);
         $data = Register::create([
             'name' => $request->get('name'),
             'phone_number' => $request->get('phone_number'),
             'email' => $request->get('email'),
             'billing_address' => $request->get('billing_address'),
             'bank_account' => $request->get('bank_account'),
-            'effective_date' => $request->get('effective_date'),
+            'effective_date' => $request->get('date'),
             'cvc' => $request->get('cvc'),
         ]);
 
