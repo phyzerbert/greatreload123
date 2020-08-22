@@ -36,6 +36,7 @@
                                     <th style="width:50px">No</th>
                                     <th>Name</th>
                                     <th>Phone Number</th>
+                                    <th>Phone Model</th>
                                     <th>Email</th>
                                     <th>Billing Address</th>
                                     <th>长号</th>
@@ -51,6 +52,7 @@
                                         <td class="name">{{$item->name}}</td>
                                         <td class="email">{{$item->email}}</td>
                                         <td class="phone_number">{{$item->phone_number}}</td>
+                                        <td class="phone_model">{{$item->phone_model}}</td>
                                         <td class="billing_address">{{$item->billing_address}}</td>
                                         <td class="bank_account">{{$item->bank_account}}</td>
                                         <td class="effective_date">{{$item->effective_date}}</td>

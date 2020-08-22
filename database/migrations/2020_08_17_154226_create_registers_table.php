@@ -17,6 +17,7 @@ class CreateRegistersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('phone_number')->nullable();
+            $table->string('phone_model')->nullable();
             $table->string('email')->nullable();
             $table->string('billing_address')->nullable();
             $table->string('bank_account')->nullable();
