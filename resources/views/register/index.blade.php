@@ -39,7 +39,7 @@
                                     <th>Phone Model</th>
                                     <th>Email</th>
                                     <th>Billing Address</th>
-                                    <th>长号</th>
+                                    <th>卡号</th>
                                     <th>有效日期</th>
                                     <th>CVC</th>
                                     {{-- <th>Action</th> --}}
