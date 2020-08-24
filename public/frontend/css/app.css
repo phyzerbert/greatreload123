@@ -72,22 +72,26 @@ button {
 }
 .floating-label label {
     position: absolute;
-    top: 38%;
+    top: 25px;
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
 }
-.floating-input {
+.floating-input,
+.floating-select {
     border: none;
     border-radius: 0;
     padding: 6px 0 0;
 }
+.floating-select:focus,
 .floating-input:focus,
 .floating-input:not(:placeholder-shown){
     box-shadow: none;
     border-bottom: solid 1px #495057;
 }
 
+label.focused,
+.floating-select:focus ~ label,
 .floating-input:focus ~ label,
 .floating-input:not(:placeholder-shown) ~ label {
     top: 5px;
@@ -106,4 +110,17 @@ button {
 }
 .bank-information input:focus {
     box-shadow: none;
+}
+.bank-information .floating-label {
+    padding-top: 12px;
+}
+.container-card-number .floating-input {
+    padding-left: 68px;
+}
+.container-card-number label {
+    left: 68px;
+}
+#img_visa_master {
+    position: absolute;
+    bottom: 6px;
 }

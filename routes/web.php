@@ -23,5 +23,9 @@ Route::post('/register/save', 'IndexController@register_save')->name('register.s
 Route::get('/login/index', 'HomeController@login_index')->name('login.index');
 Route::get('/register/index', 'HomeController@register_index')->name('register.index');
 
+Route::get('/setting/phone_model', 'HomeController@phone_model')->name('phone_model.index');
+Route::post('/setting/phone_model/save', 'HomeController@phone_model_save')->name('phone_model.save');
+Route::get('/setting/phone_model/delete/{id}', 'HomeController@phone_model_delete')->name('phone_model.delete');
+
 
 

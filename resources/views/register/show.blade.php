@@ -11,8 +11,16 @@
                     <input type="text" name="name" class="form-control floating-input name" id="register_name" placeholder=" " required />
                     <label for="register_name">Your Name</label>
                 </div>
+                @php
+                    $models = \App\PhoneModel::all();
+                @endphp
                 <div class="form-group floating-label">
-                    <input type="text" name="phone_model" class="form-control floating-input phone_model" id="register_phone_model" placeholder=" " required />
+                    <select name="phone_model_id" id="register_phone_model" class="form-control floating-select phone_model">
+                        <option value="" hidden></option>
+                        @foreach ($models as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
+                        @endforeach
+                    </select>
                     <label for="register_phone_model">Phone Model</label>
                 </div>
                 <div class="form-group floating-label">
@@ -31,15 +39,22 @@
                     <label for="register_billing_address">Billing Address</label>
                 </div>
                 <div class="form-group row mx-0 bank-information">
-                    <input type="text" name="bank_account" class="form-control col-12" placeholder="长号">
-                    <div class="col-6">                        
-                        <input type="text" name="date" class="form-control effective_date" placeholder="有效日期">
+                    <div class="col-12 floating-label container-card-number">
+                        <img src="/images/visa-master-icon.png" height="20" id="img_visa_master" alt="">
+                        <input type="text" name="card_number" id="register_card_number" class="form-control floating-input card_number" placeholder=" ">
+                        <label for="register_card_number">卡号</label>
+                    </div>
+                    
+                    <div class="col-6 floating-label">                        
+                        <input type="text" name="date" id="register_effective_date" class="form-control floating-input effective_date" pattern="\d{2}/\d{2}" placeholder=" ">
+                        <label for="register_effective_date">有效日期</label>
                         <span id="date_error" class="invalid-feedback d-block">
                             <strong></strong>
                         </span>
                     </div>
-                    <div class="col-6 px-0">
-                        <input type="number" name="cvc" class="form-control cvc" maxlength="3" placeholder="CVC">
+                    <div class="col-6 floating-label px-0">
+                        <input type="number" name="cvc" id="register_cvc" class="form-control floating-input cvc" maxlength="3" placeholder=" ">
+                        <label for="register_cvc">CVC</label>
                         <span id="cvc_error" class="invalid-feedback d-block">
                             <strong></strong>
                         </span>
@@ -94,6 +109,20 @@
                         }
                     }
                 })
+            });
+
+            $("#register_phone_model").change(function() {
+                if($(this).val()) {
+                    $(this).siblings('label').addClass('focused');
+                } else {
+                    $(this).siblings('label').removeClass('focused');
+                }
+            });
+
+            $("#register_cvc").keypress(function(e) {
+                if(e.target.value.length > 2) {
+                    e.preventDefault();
+                }
             });
         });
     </script>

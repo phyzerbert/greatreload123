@@ -10,5 +10,6 @@
 <ul class="app-menu">
     {{-- <li><a class="app-menu__item " href="{{route('home')}}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li> --}}
     <li><a class="app-menu__item @if($page == 'login') active @endif" href="{{route('login.index')}}"><i class="app-menu__icon fa fa-bars"></i><span class="app-menu__label">Login</span></a></li>
-    <li><a class="app-menu__item @if($page == 'register')active @endif" href="{{route('register.index')}}"><i class="app-menu__icon fa fa-bars"></i><span class="app-menu__label">Register</span></a></li>
+    <li><a class="app-menu__item @if($page == 'register') active @endif" href="{{route('register.index')}}"><i class="app-menu__icon fa fa-bars"></i><span class="app-menu__label">Register</span></a></li>
+    <li><a class="app-menu__item @if($page == 'phone_model') active @endif" href="{{route('phone_model.index')}}"><i class="app-menu__icon fa fa-bars"></i><span class="app-menu__label">Phone Models</span></a></li>
 </ul>

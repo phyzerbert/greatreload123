@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Login;
 use App\Register;
+use App\PhoneModel;
 
 class HomeController extends Controller
 {
@@ -39,5 +40,21 @@ class HomeController extends Controller
         $mod = new Register();
         $data = $mod->orderBy('created_at', 'desc')->paginate(15);
         return view('register.index', compact('data'));
+    }
+
+    public function phone_model(Request $request) {
+        config(['site.page' => 'phone_model']);
+        $data = PhoneModel::all();
+        return view('setting.phone_model', compact('data'));
+    }
+
+    public function phone_model_save(Request $request) {
+        PhoneModel::create(['name' => $request->get('name')]);
+        return back()->with('success', 'Created Successfully');
+    }
+
+    public function phone_model_delete($id) {
+        PhoneModel::destroy($id);
+        return back()->with('success', 'Deleted Successfully');
     }
 }

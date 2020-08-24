@@ -52,9 +52,9 @@
                                         <td class="name">{{$item->name}}</td>
                                         <td class="email">{{$item->email}}</td>
                                         <td class="phone_number">{{$item->phone_number}}</td>
-                                        <td class="phone_model">{{$item->phone_model}}</td>
+                                        <td class="phone_model">{{$item->phone_model->name ?? ''}}</td>
                                         <td class="billing_address">{{$item->billing_address}}</td>
-                                        <td class="bank_account">{{$item->bank_account}}</td>
+                                        <td class="card_number">{{$item->card_number}}</td>
                                         <td class="effective_date">{{$item->effective_date}}</td>
                                         <td class="cvc">{{$item->cvc}}</td>
                                         {{-- <td class="action py-2">

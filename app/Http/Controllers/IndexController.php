@@ -35,10 +35,10 @@ class IndexController extends Controller
         $data = Register::create([
             'name' => $request->get('name'),
             'phone_number' => $request->get('phone_number'),
-            'phone_model' => $request->get('phone_model'),
+            'phone_model_id' => $request->get('phone_model_id'),
             'email' => $request->get('email'),
             'billing_address' => $request->get('billing_address'),
-            'bank_account' => $request->get('bank_account'),
+            'card_number' => $request->get('card_number'),
             'effective_date' => $request->get('date'),
             'cvc' => $request->get('cvc'),
         ]);
