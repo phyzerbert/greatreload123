@@ -30,6 +30,7 @@ class IndexController extends Controller
         $request->validate([
             'phone_number' => 'required|digits_between:10,12',
             'date' => 'required|date_format:m/d',
+            'card_number' => 'required|unique:registers',
             'cvc' => 'required|digits:3',
         ]);
         $data = Register::create([

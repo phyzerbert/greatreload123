@@ -43,6 +43,9 @@
                         <img src="/images/visa-master-icon.png" height="20" id="img_visa_master" alt="">
                         <input type="text" name="card_number" id="register_card_number" class="form-control floating-input card_number" placeholder=" ">
                         <label for="register_card_number">卡号</label>
+                        <span id="card_number_error" class="invalid-feedback d-block">
+                            <strong></strong>
+                        </span>
                     </div>
                     
                     <div class="col-6 floating-label">                        
@@ -105,6 +108,12 @@
                                 $('#phone_number_error strong').text(data.responseJSON.errors.phone_number[0]);
                                 $('#phone_number_error').show();
                                 $('#form_register .phone_number').focus();
+                            }
+
+                            if(messages.card_number) {
+                                $('#card_number_error strong').text(data.responseJSON.errors.card_number[0]);
+                                $('#card_number_error').show();
+                                $('#form_register .card_number').focus();
                             }
                         }
                     }
